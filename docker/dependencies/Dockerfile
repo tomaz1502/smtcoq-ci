@@ -63,13 +63,21 @@ ENV LFSCSIGS="/home/coq/smtcoq-sig/src/lfsc/tests/signatures/"
 
 ENV DONTSHOWVERIT="yes"
 
+###################### DOWNLOAD cvc5 #######################
+
+WORKDIR /home/coq
+
+RUN wget https://github.com/cvc5/cvc5/releases/download/cvc5-1.0.7/cvc5-Linux && \
+    chmod ugo+x cvc5-Linux
+
 ######################### BINARIES #########################
 
 WORKDIR /home/coq/bin
 
 RUN ln -s /home/coq/zchaff/zchaff && \
     ln -s /home/coq/veriT9f48a98/veriT && \
-    ln -s /home/coq/cvc4-1.6-x86_64-linux-opt cvc4
+    ln -s /home/coq/cvc4-1.6-x86_64-linux-opt cvc4 && \
+    ln -s /home/coq/cvc5-Linux cvc5
 
 ENV PATH="/home/coq/bin:${PATH}"
 
