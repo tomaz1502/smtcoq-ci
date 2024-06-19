@@ -21,9 +21,11 @@ RUN sudo apt-get -y update && \
 
 WORKDIR /home/coq
 
-RUN opam update && \
+RUN opam repo add coq-released https://coq.inria.fr/opam/released && \
+    opam update && \
     opam upgrade -y && \
-    opam install -y num
+    opam install -y num && \
+    opam install -y coq-trakt
 
 ###################### COMPILE ZChaff ######################
 
