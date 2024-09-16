@@ -23,7 +23,8 @@ WORKDIR /home/coq
 
 RUN opam update && \
     opam upgrade -y && \
-    opam install -y num
+    opam install -y num && \
+    opam install -y coq-trakt
 
 ###################### COMPILE ZChaff ######################
 
